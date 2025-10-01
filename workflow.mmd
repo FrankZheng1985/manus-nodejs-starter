@@ -1,0 +1,33 @@
+graph TD
+    subgraph "项目管理与知识库 (Project Management & Knowledge)"
+        A[Notion]
+    end
+
+    subgraph "智能编排 (Intelligent Orchestration)"
+        B(Manus)
+    end
+
+    subgraph "代码与版本控制 (Code & Version Control)"
+        C[GitHub]
+    end
+
+    subgraph "构建、测试与部署 (Build, Test & Deploy)"
+        D[Docker]
+        E[GitHub Actions]
+    end
+
+    A -- "1. 新任务 (例如: '开发新功能')" --> B
+    B -- "2. 克隆仓库, 创建分支" --> C
+    B -- "3. 编写/修改代码" --> C
+    C -- "4. 推送代码变更" --> B
+    B -- "5. 构建 Docker 镜像并运行测试" --> D
+    D -- "6. 返回测试结果" --> B
+    B -- "7. 创建 Pull Request" --> C
+    C -- "8. (合并后) 触发 CI/CD 流水线" --> E
+    E -- "9. 部署应用" --> F((线上应用))
+    B -- "10. 更新 Notion 任务状态为 '完成'" --> A
+
+    style A fill:#f9f9f9,stroke:#333,stroke-width:2px
+    style C fill:#f9f9f9,stroke:#333,stroke-width:2px
+    style D fill:#f9f9f9,stroke:#333,stroke-width:2px
+    style E fill:#f9f9f9,stroke:#333,stroke-width:2px
